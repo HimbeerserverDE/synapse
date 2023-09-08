@@ -1,0 +1,15 @@
+networks:
+  httpsvc:
+    name: httpsvc
+    external: true
+services:
+  synapse:
+    container_name: synapse
+    image: matrixdotorg/synapse:v1.91.2
+    networks:
+      - httpsvc
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: data
+        target: /data
